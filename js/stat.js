@@ -70,7 +70,7 @@ window.renderStatistics = function (ctx, players, times) {
   renderText(ctx);
 
   var maxTime = getMaxElement(times);
-//debugger;
+
   for (var i = 0; i < players.length; i++) {
     renderColumns(ctx, players[i], times[i], i, maxTime);
   }
