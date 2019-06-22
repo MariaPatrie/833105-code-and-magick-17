@@ -8,6 +8,7 @@ var COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)
 
 var EYES_COLOR = ['black', 'red', 'blue', 'eyllow', 'green'];
 
+var userDialog = document.querySelector('.setup');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
@@ -15,9 +16,7 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .querySelector('.setup-similar-item');
 
 //--------------------------- 1 ----------------------------
-var setupShow = function() {
-  var userDialog = document.querySelector('.setup');
-
+var setupShow = function(userDialog) {
   userDialog.classList.remove('page-hidden');
 }
 
@@ -70,7 +69,3 @@ var setupSimilarShow = function() {
 
   userDialog.classList.remove('hidden');
 };
-
-setupShow();
-getWizardsFragment();
-setupSimilarShow();
