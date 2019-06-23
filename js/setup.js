@@ -17,7 +17,7 @@ var wizards = [];
 
 var showElement = function (item) {
   item.classList.remove('hidden');
-}
+};
 
 var getRandomItem = function (array) {
   return array[Math.floor(Math.random() * array.length)];
