@@ -73,30 +73,31 @@ var renderWizards = function (wizardsArray) {
   similarListElement.appendChild(fragment);
 };
 
-  var onCoatClick = function () {
-    var color = getRandomItem(COAT_COLORS);
-    wizardCoat.style.fill = color;
-    coatColorInput.value = color;
-  };
+var onCoatClick = function () {
+  var color = getRandomItem(COAT_COLORS);
+  wizardCoat.style.fill = color;
+  coatColorInput.value = color;
+};
 
-  var onEyesClick = function () {
-    var color = getRandomItem(EYES_COLORS);
-    wizardEyes.style.fill = color;
-    eyesColorInput.value = color;
-  };
-  var onFireballClick = function () {
-    var color = getRandomItem(FIREBALL_COLORS);
-    wizardFireball.style.background = color;
-    fireballColorInput.value = color;
-  };
-  
-var onPopupEscPress = function(evt) {
+var onEyesClick = function () {
+  var color = getRandomItem(EYES_COLORS);
+  wizardEyes.style.fill = color;
+  eyesColorInput.value = color;
+};
+
+var onFireballClick = function () {
+  var color = getRandomItem(FIREBALL_COLORS);
+  wizardFireball.style.background = color;
+  fireballColorInput.value = color;
+};
+
+var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
     closePopup();
   }
 };
 
-var openPopup = function() {
+var openPopup = function () {
   showElement(setup);
   showElement(userDialogSimilar);
   document.addEventListener('keydown', onPopupEscPress);
@@ -105,7 +106,7 @@ var openPopup = function() {
   wizardFireball.addEventListener('click', onFireballClick);
 };
 
-var closePopup = function() {
+var closePopup = function () {
   deleteElement(setup);
   document.removeEventListener('keydown', onPopupEscPress);
   wizardCoat.removeEventListener('click', onCoatClick);
@@ -113,27 +114,27 @@ var closePopup = function() {
   wizardFireball.removeEventListener('click', onFireballClick);
 };
 
-setupOpen.addEventListener('click', function() {
+setupOpen.addEventListener('click', function () {
   openPopup();
 });
 
-setupOpen.addEventListener('keydown', function(evt) {
+setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     openPopup();
   }
 });
 
-setupClose.addEventListener('click', function() {
+setupClose.addEventListener('click', function () {
   closePopup();
 });
 
-setupClose.addEventListener('keydown', function(evt) {
+setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
   }
 });
 
-userNameInput.addEventListener('invalid', function (evt) {
+userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
   } else if (userNameInput.validity.tooLong) {
