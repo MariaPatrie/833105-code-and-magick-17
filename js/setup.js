@@ -31,7 +31,7 @@ var showElement = function (item) {
   item.classList.remove('hidden');
 };
 
-var deleteElement = function (item) {
+var hideElement = function (item) {
   item.classList.add('hidden');
 };
 
@@ -107,7 +107,7 @@ var openPopup = function () {
 };
 
 var closePopup = function () {
-  deleteElement(setup);
+  hideElement(setup);
   document.removeEventListener('keydown', onPopupEscPress);
   wizardCoat.removeEventListener('click', onCoatClick);
   wizardEyes.removeEventListener('click', onEyesClick);
