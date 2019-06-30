@@ -21,9 +21,9 @@
 
     for (var i = 0; i < WIZARD_COUNT; i++) {
       wizardsArray[i] = {
-        name: getRandomItem(WIZARD_NAMES) + ' ' + getRandomItem(WIZARD_SURNAMES),
-        coatColor: getRandomItem(COAT_COLORS),
-        eyesColor: getRandomItem(EYES_COLORS)
+        name: window.getRandomItem(WIZARD_NAMES) + ' ' + window.getRandomItem(WIZARD_SURNAMES),
+        coatColor: window.getRandomItem(COAT_COLORS),
+        eyesColor: window.getRandomItem(EYES_COLORS)
       };
     }
 
