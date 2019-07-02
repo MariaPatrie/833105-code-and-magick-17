@@ -22,11 +22,11 @@
     return wizardItem;
   };
 
-  window.render = {
+  window.wizard = {
     getRandomItem: function (array) {
       return array[Math.floor(Math.random() * array.length)];
     },
-    getWizardsArray: function () {
+    getAll: function () {
       var wizardsArray = [];
 
       for (var i = 0; i < WIZARD_COUNT; i++) {
@@ -35,13 +35,14 @@
           coatColor: this.getRandomItem(COAT_COLORS),
           eyesColor: this.getRandomItem(EYES_COLORS)
         };
-      };
+      }
+      return wizardsArray;
     },
-    renderWizards: function (wizardsArray) {
+    render: function (array) {
       var fragment = document.createDocumentFragment();
 
-      for (var i = 0; i < wizardsArray.length; i++) {
-        fragment.appendChild(getWizard(wizardsArray[i]));
+      for (var i = 0; i < array.length; i++) {
+        fragment.appendChild(getWizard(array[i]));
       }
 
       similarListElement.appendChild(fragment);

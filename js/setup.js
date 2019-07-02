@@ -23,19 +23,19 @@
   var userNameInput = setup.querySelector('.setup-user-name');
 
   var onCoatClick = function () {
-    var color = window.render.getRandomItem(COAT_COLORS);
+    var color = window.wizard.getRandomItem(COAT_COLORS);
     wizardCoat.style.fill = color;
     coatColorInput.value = color;
   };
 
   var onEyesClick = function () {
-    var color = window.render.getRandomItem(EYES_COLORS);
+    var color = window.wizard.getRandomItem(EYES_COLORS);
     wizardEyes.style.fill = color;
     eyesColorInput.value = color;
   };
 
   var onFireballClick = function () {
-    var color = window.render.getRandomItem(FIREBALL_COLORS);
+    var color = window.wizard.getRandomItem(FIREBALL_COLORS);
     wizardFireball.style.background = color;
     fireballColorInput.value = color;
   };
@@ -65,6 +65,18 @@
     setup.style.left = '50%';
   };
 
+  var onCheck = function () {
+    if (userNameInput.validity.tooShort) {
+      userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
+    } else if (userNameInput.validity.tooLong) {
+      userNameInput.setCustomValidity('Имя не должно превышать 25-ти символов');
+    } else if (userNameInput.validity.valueMissing) {
+      userNameInput.setCustomValidity('Обязательное поле');
+    } else {
+      userNameInput.setCustomValidity('');
+    }
+  }
+
   setupOpen.addEventListener('click', function () {
     openPopup();
   });
@@ -85,19 +97,8 @@
     }
   });
 
-  userNameInput.addEventListener('invalid', function () {
-    if (userNameInput.validity.tooShort) {
-      userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
-    } else if (userNameInput.validity.tooLong) {
-      userNameInput.setCustomValidity('Имя не должно превышать 25-ти символов');
-    } else if (userNameInput.validity.valueMissing) {
-      userNameInput.setCustomValidity('Обязательное поле');
-    } else {
-      userNameInput.setCustomValidity('');
-    }
-  });
-
-  wizards = window.render.getWizardsArray();
-  window.render.renderWizards(wizards);
+  userNameInput.addEventListener('invalid', onCheck);
+  wizards = window.wizard.getAll();
+  window.wizard.render(wizards);
 
 })();
