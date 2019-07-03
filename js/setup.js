@@ -75,7 +75,7 @@
     } else {
       userNameInput.setCustomValidity('');
     }
-  }
+  };
 
   setupOpen.addEventListener('click', function () {
     openPopup();
