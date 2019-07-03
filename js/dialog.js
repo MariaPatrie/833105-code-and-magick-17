@@ -1,7 +1,6 @@
 'use strict';
 
 (function () {
-
   var setup = document.querySelector('.setup');
   var dialogHandle = setup.querySelector('.upload');
 
@@ -51,5 +50,4 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
-
 })();
