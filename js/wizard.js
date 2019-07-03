@@ -23,17 +23,14 @@
   };
 
   window.wizard = {
-    getRandomItem: function (array) {
-      return array[Math.floor(Math.random() * array.length)];
-    },
     getAll: function () {
       var wizardsArray = [];
 
       for (var i = 0; i < WIZARD_COUNT; i++) {
         wizardsArray[i] = {
-          name: this.getRandomItem(WIZARD_NAMES) + ' ' + this.getRandomItem(WIZARD_SURNAMES),
-          coatColor: this.getRandomItem(COAT_COLORS),
-          eyesColor: this.getRandomItem(EYES_COLORS)
+          name: window.util.getRandomItem(WIZARD_NAMES) + ' ' + window.util.getRandomItem(WIZARD_SURNAMES),
+          coatColor: window.util.getRandomItem(COAT_COLORS),
+          eyesColor: window.util.getRandomItem(EYES_COLORS)
         };
       }
       return wizardsArray;

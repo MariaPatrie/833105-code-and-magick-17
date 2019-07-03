@@ -23,19 +23,19 @@
   var userNameInput = setup.querySelector('.setup-user-name');
 
   var onCoatClick = function () {
-    var color = window.wizard.getRandomItem(COAT_COLORS);
+    var color = window.util.getRandomItem(COAT_COLORS);
     wizardCoat.style.fill = color;
     coatColorInput.value = color;
   };
 
   var onEyesClick = function () {
-    var color = window.wizard.getRandomItem(EYES_COLORS);
+    var color = window.util.getRandomItem(EYES_COLORS);
     wizardEyes.style.fill = color;
     eyesColorInput.value = color;
   };
 
   var onFireballClick = function () {
-    var color = window.wizard.getRandomItem(FIREBALL_COLORS);
+    var color = window.util.getRandomItem(FIREBALL_COLORS);
     wizardFireball.style.background = color;
     fireballColorInput.value = color;
   };
