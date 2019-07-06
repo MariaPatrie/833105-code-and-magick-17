@@ -8,8 +8,6 @@
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
 
-  var wizards = [];
-
   var setup = document.querySelector('.setup');
   var coatColorInput = setup.querySelector('input[name=coat-color]');
   var eyesColorInput = setup.querySelector('input[name=eyes-color]');
@@ -111,8 +109,8 @@
     node.style.left = 0;
     node.style.right = 0;
     node.style.fontSize = '30px';
-    
-    node.textContent = errorMessage; 
+
+    node.textContent = errorMessage;
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
