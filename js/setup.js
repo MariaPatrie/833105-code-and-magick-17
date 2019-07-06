@@ -21,6 +21,7 @@
   var setupClose = setup.querySelector('.setup-close');
   var userDialogSimilar = document.querySelector('.setup-similar');
   var userNameInput = setup.querySelector('.setup-user-name');
+  var form = setup.querySelector('.setup-wizard-form');
 
   var onCoatClick = function () {
     var color = window.util.getRandomItem(COAT_COLORS);
@@ -98,7 +99,31 @@
   });
 
   userNameInput.addEventListener('invalid', onCheck);
-  wizards = window.wizard.getAll();
-  window.wizard.render(wizards);
 
+  var onSubmitHandler = function () {
+    window.util.hideElement(setup);
+  };
+
+  var onErrorHandler = function (errorMessage) {
+    var node = document.createElement('div');
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = '30px';
+    
+    node.textContent = errorMessage; 
+    document.body.insertAdjacentElement('afterbegin', node);
+  };
+
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), onSubmitHandler, onErrorHandler);
+    evt.preventDefault();
+  });
+
+  var onLoadHandler = function (wizards) {
+    window.wizard.render(wizards);
+  };
+
+  window.backend.load(onLoadHandler, onErrorHandler);
 })();
