@@ -16,8 +16,8 @@
     var wizardItem = similarWizardTemplate.cloneNode(true);
 
     wizardItem.querySelector('.setup-similar-label').textContent = wizard.name;
-    wizardItem.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-    wizardItem.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+    wizardItem.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
+    wizardItem.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
 
     return wizardItem;
   };
@@ -38,7 +38,7 @@
     render: function (array) {
       var fragment = document.createDocumentFragment();
 
-      for (var i = 0; i < array.length; i++) {
+      for (var i = 0; i < WIZARD_COUNT; i++) {
         fragment.appendChild(getWizard(array[i]));
       }
 
