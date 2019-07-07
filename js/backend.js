@@ -2,8 +2,6 @@
 
 (function () {
   var STATUS_OK = 200;
-  var urlPost = 'https://js.dump.academy/code-and-magick';
-  var urlGet = 'https://js.dump.academy/code-and-magick/data';
 
   window.backend = {
     save: function (url, data, onLoad, onError) {
