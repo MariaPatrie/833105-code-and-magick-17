@@ -38,7 +38,7 @@
     render: function (array) {
       var fragment = document.createDocumentFragment();
 
-      for (var i = 0; i < 4; i++) {
+      for (var i = 0; i < WIZARD_COUNT; i++) {
         fragment.appendChild(getWizard(array[i]));
       }
 

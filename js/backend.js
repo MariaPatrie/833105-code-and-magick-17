@@ -1,20 +1,21 @@
 'use strict';
 
 (function () {
+  var STATUS_OK = 200;
   var urlPost = 'https://js.dump.academy/code-and-magick';
   var urlGet = 'https://js.dump.academy/code-and-magick/data';
 
   window.backend = {
-    save: function (data, onLoad, onError) {
+    save: function (url, data, onLoad, onError) {
       var xhr = createRequest(onLoad, onError);
-      xhr.open('POST', urlPost);
+      xhr.open('POST', url);
       xhr.send(data);
     },
 
-    load: function (onLoad, onError) {
+    load: function (url, onLoad, onError) {
       var xhr = createRequest(onLoad, onError);
       xhr.timeout = 10000;
-      xhr.open('GET', urlGet);
+      xhr.open('GET', url);
       xhr.send();
     }
   };
@@ -25,7 +26,7 @@
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', function () {
-      if (xhr.status === 200) {
+      if (xhr.status === STATUS_OK) {
         onLoad(xhr.response);
       } else {
         onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);

@@ -8,6 +8,9 @@
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
 
+  var urlPost = 'https://js.dump.academy/code-and-magick';
+  var urlGet = 'https://js.dump.academy/code-and-magick/data';
+
   var setup = document.querySelector('.setup');
   var coatColorInput = setup.querySelector('input[name=coat-color]');
   var eyesColorInput = setup.querySelector('input[name=eyes-color]');
@@ -115,7 +118,7 @@
   };
 
   form.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(form), onSubmitHandler, onErrorHandler);
+    window.backend.save(urlPost, new FormData(form), onSubmitHandler, onErrorHandler);
     evt.preventDefault();
   });
 
@@ -123,5 +126,5 @@
     window.wizard.render(wizards);
   };
 
-  window.backend.load(onLoadHandler, onErrorHandler);
+  window.backend.load(urlGet, onLoadHandler, onErrorHandler);
 })();
