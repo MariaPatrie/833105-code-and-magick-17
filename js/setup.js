@@ -39,7 +39,7 @@
     }
 
     return rank;
-  }
+  };
 
   var namesComparator = function (left, right) {
     if (left > right) {
@@ -49,7 +49,7 @@
     } else {
       return 0;
     }
-  }
+  };
 
   var updateWizards = function () {
     window.wizard.render(wizards.sort(function (left, right) {
@@ -62,7 +62,7 @@
 
       return rankDiff;
     }));
-  }
+  };
 
   var onEyesChange = window.debounce(function (color) {
     eyesColor = color;
