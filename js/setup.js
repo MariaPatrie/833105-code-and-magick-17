@@ -24,22 +24,76 @@
   var userNameInput = setup.querySelector('.setup-user-name');
   var form = setup.querySelector('.setup-wizard-form');
 
+  var coatColor;
+  var eyesColor;
+  var wizards = [];
+
+  var getRank = function (wizard) {
+    var rank = 0;
+
+    if (wizard.colorCoat === coatColor) {
+      rank += 2;
+    }
+    if (wizard.colorEyes === eyesColor) {
+      rank += 1;
+    }
+
+    return rank;
+  }
+
+  var namesComparator = function (left, right) {
+    if (left > right) {
+      return 1;
+    } else if (left < right) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  var updateWizards = function () {
+    window.wizard.render(wizards.sort(function (left, right) {
+
+      var rankDiff = getRank(right) - getRank(left);
+
+      if (rankDiff === 0) {
+        rankDiff = namesComparator(left.name, right.name);
+      }
+
+      return rankDiff;
+    }));
+  }
+
+  var onEyesChange = window.debounce(function (color) {
+    eyesColor = color;
+    updateWizards();
+  });
+
+  var onCoatChange = window.debounce(function (color) {
+    coatColor = color;
+    updateWizards();
+  });
+
   var onCoatClick = function () {
-    var color = window.util.getRandomItem(COAT_COLORS);
-    wizardCoat.style.fill = color;
-    coatColorInput.value = color;
+    var newColor = window.util.getRandomItem(COAT_COLORS);
+    wizardCoat.style.fill = newColor;
+    coatColorInput.value = newColor;
+    coatColor = newColor;
+    onCoatChange(newColor);
   };
 
   var onEyesClick = function () {
-    var color = window.util.getRandomItem(EYES_COLORS);
-    wizardEyes.style.fill = color;
-    eyesColorInput.value = color;
+    var newColor = window.util.getRandomItem(EYES_COLORS);
+    wizardEyes.style.fill = newColor;
+    eyesColorInput.value = newColor;
+    eyesColor = newColor;
+    onEyesChange(newColor);
   };
 
   var onFireballClick = function () {
-    var color = window.util.getRandomItem(FIREBALL_COLORS);
-    wizardFireball.style.background = color;
-    fireballColorInput.value = color;
+    var newColor = window.util.getRandomItem(FIREBALL_COLORS);
+    wizardFireball.style.background = newColor;
+    fireballColorInput.value = newColor;
   };
 
   var onPopupEscPress = function (evt) {
@@ -122,8 +176,9 @@
     evt.preventDefault();
   });
 
-  var onLoadHandler = function (wizards) {
-    window.wizard.render(wizards);
+  var onLoadHandler = function (data) {
+    wizards = data;
+    updateWizards();
   };
 
   window.backend.load(urlGet, onLoadHandler, onErrorHandler);

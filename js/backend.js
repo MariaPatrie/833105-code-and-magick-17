@@ -2,6 +2,7 @@
 
 (function () {
   var STATUS_OK = 200;
+  var TIME = 10000;
 
   window.backend = {
     save: function (url, data, onLoad, onError) {
@@ -12,7 +13,7 @@
 
     load: function (url, onLoad, onError) {
       var xhr = createRequest(onLoad, onError);
-      xhr.timeout = 10000;
+      xhr.timeout = TIME;
       xhr.open('GET', url);
       xhr.send();
     }
