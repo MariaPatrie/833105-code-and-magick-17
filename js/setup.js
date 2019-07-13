@@ -52,7 +52,7 @@
   };
 
   var updateWizards = function () {
-    window.wizard.render(wizards.sort(function (left, right) {
+    window.wizard.render(wizards.slice().sort(function (left, right) {
 
       var rankDiff = getRank(right) - getRank(left);
 
