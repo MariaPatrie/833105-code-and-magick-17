@@ -37,7 +37,7 @@
     },
     render: function (array) {
       var fragment = document.createDocumentFragment();
-
+      similarListElement.innerHTML = '';
       for (var i = 0; i < WIZARD_COUNT; i++) {
         fragment.appendChild(getWizard(array[i]));
       }
